@@ -9,17 +9,17 @@ import { map, Observable } from 'rxjs';
 export class CustomerService {
   constructor(private http: HttpClient) {}
 
-  Url = 'https://localhost:7004/api/Get/Customer';
+   Url = 'https://localhost:7004/api/Get/Customer';
 
-  getCustomerUrl(): Observable<ICustomer[]> {
-    return this.http.get<ICustomer[]>(this.Url);
-  }
+ getCustomerUrl(): Observable<ICustomer[]> {
+     return this.http.get<ICustomer[]>(this.Url);
+   }
 
   getCustomer(): ICustomer[] {
     return [
-      { id: 1, name: 'lorenzo', surname: 'Vinted', email: 'lorenzo@gmail.com' },
-      { id: 2, name: 'lorenzo', surname: 'Vinted', email: 'lorenzo@gmail.com' },
-      { id: 3, name: 'lorenzo', surname: 'Vinted', email: 'lorenzo@gmail.com' },
+      { id: 1, name: 'lorenzo', surname: 'A', email: 'lorenzo@gmail.com' },
+      { id: 2, name: 'Angelo', surname: 'B', email: 'angelo@gmail.com' },
+      { id: 3, name: 'Aarco', surname: 'C', email: 'marco@gmail.com' },
     ];
   }
 }

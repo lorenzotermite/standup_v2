@@ -15,17 +15,21 @@ export interface IGridColumn<T> {
 export class CustomerBrowseComponent {
   // public customer: ICustomer[];
   public customer = new MatTableDataSource<ICustomer>([]);
-  public displayedColumns: string[] = ['id', 'name', 'surname', 'email'];
+  public displayedColumns: IGridColumn<ICustomer>[] = [
+    { caption: 'id', field: 'id' },
+    { caption: 'name', field: 'name' },
+    { caption: 'surname', field: 'surname' },
+    { caption: 'email', field: 'email' },
+  ];
 
   constructor(private _customerService: CustomerService) {
-    //this.customer = _customerService.getCustomer();
+   // this.customer.data = _customerService.getCustomer();
   }
 
   ngOnInit(): void {
     this._customerService.getCustomerUrl().subscribe((res: ICustomer[]) => {
       this.customer.data = res;
-
-      console.log(res);
+   
     });
   }
 }

@@ -1,11 +1,16 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <ng-container *ngFor="let column of columns">
-    <ng-container [matColumnDef]="column">
-      <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
-      <td mat-cell *matCellDef="let row">{{ row[column] }}</td>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <ng-container *ngFor="let column of columnsToDisplay">
+    <ng-container [matColumnDef]="column.caption">
+      <th mat-header-cell *matHeaderCellDef [mat-sort-header]="column.caption">
+        {{ column.caption | translate }}
+      </th>
+      <td mat-cell *matCellDef="let customer">
+        {{ customer[column.field] }}
+      </td>
     </ng-container>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columns"></tr>
-  <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
